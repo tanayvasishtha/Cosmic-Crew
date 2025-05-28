@@ -55,7 +55,7 @@
         <div class="hero-content">
             <h1>Discover the Universe Together</h1>
             <p>Connect with local stargazers, learn astronomy, and explore the cosmos with your community.</p>
-            <div class="cta-buttons">
+            <div class="hero-cta">
                 <a href="#learn" class="cta-button primary">Get Started</a>
                 <button class="cta-button secondary">Learn More</button>
             </div>
@@ -103,58 +103,32 @@
             <p>Start your journey to the stars</p>
         </div>
 
-        <!-- AI Tutor Section -->
-        <div class="ai-chat-container">
-            <h3>🚀 Your AI Astronomy Tutor</h3>
-            <p>Ask me anything about space, stars, planets, or cosmic phenomena!</p>
-
-            <div id="chat-messages" class="chat-messages">
-                <!-- Messages will be dynamically added here -->
-            </div>
-
-            <div class="chat-input-container">
-                <input type="text" id="user-question" class="chat-input"
-                    placeholder="Ask about black holes, stars, planets..." />
-                <button id="ask-button" class="chat-button">✨ Ask</button>
+        <!-- AI Tutor Interface -->
+        <div class="ai-tutor-container">
+            <h3>Your AI Astronomy Tutor</h3>
+            <div class="chat-interface" id="ai-chat">
+                <div class="chat-messages" id="chat-messages">
+                    <!-- Messages will be added here dynamically -->
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="user-question" placeholder="Ask anything about astronomy...">
+                    <button class="cta-button primary" id="ask-button">Ask</button>
+                </div>
             </div>
         </div>
 
-        <!-- Learning Paths -->
-        <div class="learning-grid">
-            <div class="card">
-                <div class="card-icon">🌟</div>
+        <div class="learning-path">
+            <div class="cosmic-card">
                 <h3>Beginner's Guide</h3>
-                <p>Start with the basics of stargazing and learn to identify major constellations visible tonight.</p>
-                <div class="card-progress">
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 60%"></div>
-                    </div>
-                    <span class="progress-text">3/5 topics completed</span>
-                </div>
+                <p>Start with the basics of stargazing</p>
             </div>
-
-            <div class="card">
-                <div class="card-icon">🪐</div>
+            <div class="cosmic-card">
                 <h3>Find Planets</h3>
-                <p>Learn to identify planets in the night sky and understand their orbital movements.</p>
-                <div class="card-progress">
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 40%"></div>
-                    </div>
-                    <span class="progress-text">2/5 topics completed</span>
-                </div>
+                <p>Learn to identify planets in the night sky</p>
             </div>
-
-            <div class="card">
-                <div class="card-icon">⭐</div>
+            <div class="cosmic-card">
                 <h3>Constellations</h3>
-                <p>Master the art of constellation spotting and learn the stories behind the stars.</p>
-                <div class="card-progress">
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 80%"></div>
-                    </div>
-                    <span class="progress-text">4/5 topics completed</span>
-                </div>
+                <p>Master the art of constellation spotting</p>
             </div>
         </div>
     </section>
