@@ -142,6 +142,17 @@ class LearningSystem {
         const learningPath = document.querySelector('.learning-path');
         if (!learningPath) return;
 
+        // Add progress bar
+        const progressHTML = `
+            <div class="cosmic-card progress-card">
+                <h3>Your Learning Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: ${this.progress}%"></div>
+                </div>
+                <p>${Math.round(this.progress)}% Complete - Keep going! 🌟</p>
+            </div>
+        `;
+
         const levelsHTML = this.levels.map(level => `
             <div class="cosmic-card level-card ${level.id === this.currentLevel ? 'active' : ''}">
                 <h3>${level.title}</h3>
@@ -165,7 +176,7 @@ class LearningSystem {
             </div>
         `).join('');
 
-        learningPath.innerHTML = levelsHTML;
+        learningPath.innerHTML = progressHTML + levelsHTML;
     }
 
     // Complete a lesson
@@ -270,5 +281,6 @@ class LearningSystem {
     }
 }
 
-// Initialize learning system
-const learningSystem = new LearningSystem(); 
+// Initialize learning system and make it globally accessible
+const learningSystem = new LearningSystem();
+window.learningSystem = learningSystem; 
