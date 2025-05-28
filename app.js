@@ -1,4 +1,5 @@
 import apiService from './api-service.js';
+import aiTutor from './ai-tutor.js';
 
 // DOM Elements
 const weatherInfo = document.getElementById('weather-info');
@@ -58,7 +59,7 @@ async function getUserLocation() {
 async function updateWeatherInfo() {
     try {
         const weather = await apiService.getWeather(userLocation.latitude, userLocation.longitude);
-        const skyConditions = await apiService.getSkyConditions(userLocation.latitude, userLocation.longitude);
+        const skyConditions = await getSkyConditions();
 
         const weatherHTML = `
             <div class="weather-details">
@@ -68,7 +69,7 @@ async function updateWeatherInfo() {
                 <p>Visibility: ${(weather.visibility / 1000).toFixed(1)}km</p>
                 <p>Humidity: ${weather.main.humidity}%</p>
                 <p>Wind Speed: ${weather.wind.speed}m/s</p>
-                <p>Stargazing Conditions: ${skyConditions.isClear ? 'Good' : 'Poor'}</p>
+                <p>Stargazing Conditions: ${skyConditions.quality}</p>
             </div>
         `;
 
@@ -315,4 +316,39 @@ function showNotification(message, type = 'info') {
     setTimeout(() => {
         notification.remove();
     }, 3000);
+}
+
+// Get sky conditions for stargazing
+async function getSkyConditions() {
+    try {
+        const weather = await apiService.getWeather(userLocation.latitude, userLocation.longitude);
+
+        const conditions = {
+            cloudCover: weather.clouds.all,
+            visibility: weather.visibility / 1000, // Convert to km
+            humidity: weather.main.humidity,
+            windSpeed: weather.wind.speed
+        };
+
+        // Determine if conditions are good for stargazing
+        const isClear = conditions.cloudCover < 30 &&
+            conditions.visibility > 5 &&
+            conditions.humidity < 80;
+
+        return {
+            ...conditions,
+            isClear,
+            quality: isClear ? 'Excellent' : conditions.cloudCover < 60 ? 'Fair' : 'Poor'
+        };
+    } catch (error) {
+        console.error('Error getting sky conditions:', error);
+        return {
+            cloudCover: 0,
+            visibility: 10,
+            humidity: 50,
+            windSpeed: 5,
+            isClear: true,
+            quality: 'Unknown'
+        };
+    }
 } 
