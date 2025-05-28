@@ -1,85 +1,82 @@
-# Cosmic Crew 🌟
+# Cosmic Crew
 
-A community-driven stargazing platform connecting young astronomers with local events and learning opportunities.
+## Overview
 
-## 🌌 About
+Cosmic Crew is a modern, interactive web application designed to connect local stargazing communities, provide real-time astronomy data, and offer an AI-powered learning experience. Built with vanilla JavaScript and deployed on Vercel, it offers a seamless, responsive experience for astronomy enthusiasts of all levels.
 
-Cosmic Crew is a web application designed to make astronomy accessible and engaging for young people aged 13-24. It connects users with local stargazing events, provides real-time sky information, and offers a progressive learning system for budding astronomers.
+## Features
 
-## ✨ Features
+- **Tonight's Sky**: Real-time weather conditions, visible astronomical objects, and ISS pass times based on your location.
+- **Local Events**: Discover and join stargazing events in your area.
+- **Learning Path**: Structured lessons and achievements to guide your astronomy journey.
+- **AI Astronomy Tutor**: Personalized learning assistance powered by advanced AI.
+- **Community Hub**: Connect with local astronomy groups and mentors.
 
-- **Tonight's Sky Intelligence**: Get personalized stargazing recommendations based on your location
-- **Community Discovery**: Find and join local astronomy events and groups
-- **Progressive Learning**: Step-by-step guides from beginner to expert
-- **Real-time Weather Integration**: Know the best times for stargazing
-- **Mobile-First Design**: Optimized for stargazing on the go
+## API Integrations
 
-## 🚀 Tech Stack
+- **OpenWeatherMap API**: Provides real-time weather data for stargazing conditions.
+- **NASA APIs**:
+  - Astronomy Picture of the Day (APOD)
+  - Near-Earth Object Web Service (NEOWS)
+  - ISS Pass Times
+  - Planetary Positions
 
-- HTML5, CSS3, JavaScript ES6+
-- NASA Open Data API
-- OpenWeatherMap API
-- Browser Geolocation API
-- ISS Tracking API
-- Progressive Web App (PWA) support
+## AI Tutor
 
-## 🛠️ Setup
+The AI tutor uses a personalized approach to answer astronomy questions. It considers your learning level, location, and sky conditions to provide tailored responses.
 
-1. Clone the repository
-2. Open `index.html` in your browser
-3. Allow location access for personalized recommendations
+## Security
 
-## 📱 PWA Support
+- **API Key Management**: All API keys are stored as environment variables and never exposed in the codebase.
+- **Content Security Policy (CSP)**: Implemented to prevent XSS attacks.
+- **Input Sanitization**: All user-generated content is sanitized before rendering to prevent XSS.
 
-Install Cosmic Crew as a Progressive Web App for offline access and push notifications.
+## Setup
 
-## 🤝 Contributing
+1. **Clone the repository**:
 
-We welcome contributions! Please read our contributing guidelines before submitting pull requests.
+   ```bash
+   git clone https://github.com/yourusername/cosmiccrew.git
+   cd cosmiccrew
+   ```
 
-## 📄 License
+2. **Install dependencies**:
 
-MIT License - See LICENSE file for details
-
-## 🚀 Deployment & Production
-
-### Local Development
-
-1. Install dependencies:
-
-   ```sh
+   ```bash
    npm install
    ```
 
-2. Install Vercel CLI (if not already):
+3. **Set up environment variables**:
+   Create a `.env` file in the root directory with the following variables:
 
-   ```sh
-   npm install -g vercel
+   ```
+   OPENWEATHER_API_KEY=your_openweather_api_key
+   NASA_API_KEY=your_nasa_api_key
    ```
 
-3. Run locally with serverless API support:
+4. **Run locally**:
 
-   ```sh
-   vercel dev
+   ```bash
+   npm start
    ```
 
-### Production Deployment (Vercel)
+5. **Deploy to Vercel**:
+   - Connect your GitHub repository to Vercel.
+   - Set environment variables in the Vercel dashboard.
+   - Deploy!
 
-1. Push your code to GitHub.
-2. Import your repo at [vercel.com](https://vercel.com/).
-3. In Vercel dashboard, add your Perplexity API key as an environment variable:
-   - `PPLX_API_KEY=your-key-here`
-4. Deploy!
+## Contributing
 
-### Security
+Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) for details.
 
-- **Never** put API keys in frontend code. All keys are stored in Vercel environment variables and only used in `/api` serverless functions.
+## License
 
-### Features
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-- AI Astronomy Tutor (Perplexity Sonar Pro powered)
-- ISS Passes (real-time, CORS-free)
-- Modern, mobile-first, accessible UI
-- Community events, learning paths, and more!
+## Acknowledgments
+
+- OpenWeatherMap for weather data.
+- NASA for astronomical data.
+- Vercel for hosting and deployment.
 
 ---
