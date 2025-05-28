@@ -20,6 +20,7 @@ Cosmic Crew is a modern, interactive web application designed to connect local s
   - Near-Earth Object Web Service (NEOWS)
   - ISS Pass Times
   - Planetary Positions
+- **Perplexity Sonar API**: Powers the AI Astronomy Tutor, enabling advanced natural language understanding and personalized responses to user questions about astronomy.
 
 ## AI Tutor
 
