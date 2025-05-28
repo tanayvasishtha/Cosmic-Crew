@@ -23,7 +23,7 @@ Cosmic Crew is a modern, interactive web application designed to connect local s
 
 ## AI Tutor
 
-The AI tutor uses a personalized approach to answer astronomy questions. It considers your learning level, location, and sky conditions to provide tailored responses.
+The AI tutor uses a personalized approach to answer astronomy questions. It considers your learning level, location, and sky conditions to provide tailored responses. Powered by the Perplexity Sonar API, it offers advanced natural language processing capabilities for an enhanced learning experience.
 
 ## Security
 
