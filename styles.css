@@ -910,3 +910,15 @@ a.cta-button:visited {
     font-size: var(--text-lg);
     font-weight: 500;
 }
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.logo h1 {
+    margin: 0;
+    line-height: 1;
+    font-size: var(--text-4xl);
+}

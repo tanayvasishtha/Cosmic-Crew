@@ -176,7 +176,7 @@ class LearningSystem {
             </div>
         `).join('');
 
-        learningPath.innerHTML = progressHTML + levelsHTML;
+        learningPath.innerHTML = sanitizeHTML(progressHTML + levelsHTML);
     }
 
     // Complete a lesson
@@ -263,7 +263,7 @@ class LearningSystem {
             </div>
         `).join('');
 
-        achievementsContainer.innerHTML = achievementsHTML;
+        achievementsContainer.innerHTML = sanitizeHTML(achievementsHTML);
     }
 
     // Show notification
@@ -283,4 +283,11 @@ class LearningSystem {
 
 // Initialize learning system and make it globally accessible
 const learningSystem = new LearningSystem();
-window.learningSystem = learningSystem; 
+window.learningSystem = learningSystem;
+
+// Sanitize HTML to prevent XSS
+function sanitizeHTML(str) {
+    const temp = document.createElement('div');
+    temp.textContent = str;
+    return temp.innerHTML;
+} 

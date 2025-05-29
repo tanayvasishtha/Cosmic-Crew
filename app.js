@@ -73,7 +73,7 @@ async function updateWeatherInfo() {
             </div>
         `;
 
-        weatherInfo.innerHTML = weatherHTML;
+        weatherInfo.innerHTML = sanitizeHTML(weatherHTML);
     } catch (error) {
         console.error('Error updating weather:', error);
         weatherInfo.innerHTML = '<p>Weather information unavailable</p>';
@@ -96,7 +96,7 @@ async function updateVisibleObjects() {
             </div>
         `;
 
-        objectsList.innerHTML = objectsHTML;
+        objectsList.innerHTML = sanitizeHTML(objectsHTML);
     } catch (error) {
         console.error('Error updating astronomical objects:', error);
         objectsList.innerHTML = '<p>Astronomical data unavailable</p>';
@@ -119,7 +119,7 @@ async function updateISSInfo() {
             </div>
         `;
 
-        issInfo.innerHTML = issHTML;
+        issInfo.innerHTML = sanitizeHTML(issHTML);
     } catch (error) {
         console.error('Error updating ISS info:', error);
         issInfo.innerHTML = '<p>ISS information unavailable</p>';
@@ -351,4 +351,11 @@ async function getSkyConditions() {
             quality: 'Unknown'
         };
     }
+}
+
+// Sanitize HTML to prevent XSS
+function sanitizeHTML(str) {
+    const temp = document.createElement('div');
+    temp.textContent = str;
+    return temp.innerHTML;
 } 

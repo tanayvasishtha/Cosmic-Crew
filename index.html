@@ -24,6 +24,10 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' data: https://apod.nasa.gov https://*.nasa.gov; script-src 'self'; style-src 'self' 'unsafe-inline';">
 </head>
 
 <body>
@@ -180,6 +184,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script type="module" src="config.js"></script>
     <script type="module" src="app.js"></script>
     <script type="module" src="community.js"></script>
     <script type="module" src="learning.js"></script>

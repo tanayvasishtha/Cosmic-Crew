@@ -128,7 +128,7 @@ class CommunityManager {
             </div>
         `).join('');
 
-        this.eventsContainer.innerHTML = eventsHTML;
+        this.eventsContainer.innerHTML = sanitizeHTML(eventsHTML);
     }
 
     // Join an event
@@ -205,4 +205,11 @@ document.addEventListener('DOMContentLoaded', () => {
             e.target.reset();
         });
     }
-}); 
+});
+
+// Sanitize HTML to prevent XSS
+function sanitizeHTML(str) {
+    const temp = document.createElement('div');
+    temp.textContent = str;
+    return temp.innerHTML;
+} 
