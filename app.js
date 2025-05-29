@@ -1,5 +1,7 @@
 import apiService from './api-service.js';
 import aiTutor from './ai-tutor.js';
+// If you need config, uncomment the next line:
+// import config from './config.js';
 
 // DOM Elements
 const weatherInfo = document.getElementById('weather-info');

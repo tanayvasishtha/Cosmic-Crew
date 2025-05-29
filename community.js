@@ -1,3 +1,6 @@
+// If you need config, uncomment the next line:
+// import config from './config.js';
+
 // Community Features
 class CommunityManager {
     constructor() {

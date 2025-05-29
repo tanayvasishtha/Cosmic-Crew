@@ -1,3 +1,2 @@
 # Ignore environment files and config with secrets
-.env
-config.js 
+.env 
