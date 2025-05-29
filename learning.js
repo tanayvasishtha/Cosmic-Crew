@@ -179,7 +179,7 @@ class LearningSystem {
             </div>
         `).join('');
 
-        learningPath.innerHTML = sanitizeHTML(progressHTML + levelsHTML);
+        learningPath.innerHTML = progressHTML + levelsHTML;
     }
 
     // Complete a lesson
@@ -266,7 +266,7 @@ class LearningSystem {
             </div>
         `).join('');
 
-        achievementsContainer.innerHTML = sanitizeHTML(achievementsHTML);
+        achievementsContainer.innerHTML = achievementsHTML;
     }
 
     // Show notification

@@ -131,7 +131,7 @@ class CommunityManager {
             </div>
         `).join('');
 
-        this.eventsContainer.innerHTML = sanitizeHTML(eventsHTML);
+        this.eventsContainer.innerHTML = eventsHTML;
     }
 
     // Join an event
