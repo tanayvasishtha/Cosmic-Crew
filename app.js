@@ -62,7 +62,7 @@ async function updateWeatherInfo() {
     try {
         const weather = await apiService.getWeather(userLocation.latitude, userLocation.longitude);
         const skyConditions = await getSkyConditions();
-
+        if (!weather || !weather.main || !weather.weather) throw new Error('Weather data unavailable');
         const weatherHTML = `
             <div class="weather-details">
                 <p>Temperature: ${Math.round(weather.main.temp)}°C</p>
@@ -74,10 +74,8 @@ async function updateWeatherInfo() {
                 <p>Stargazing Conditions: ${skyConditions.quality}</p>
             </div>
         `;
-
-        weatherInfo.innerHTML = sanitizeHTML(weatherHTML);
+        weatherInfo.innerHTML = weatherHTML;
     } catch (error) {
-        console.error('Error updating weather:', error);
         weatherInfo.innerHTML = '<p>Weather information unavailable</p>';
     }
 }
@@ -86,7 +84,7 @@ async function updateWeatherInfo() {
 async function updateVisibleObjects() {
     try {
         const apod = await apiService.getAstronomyPictureOfDay();
-
+        if (!apod || apod.error || !apod.url || !apod.title) throw new Error('APOD unavailable');
         const objectsHTML = `
             <div class="objects-list">
                 <div class="apod-item">
@@ -97,10 +95,8 @@ async function updateVisibleObjects() {
                 </div>
             </div>
         `;
-
-        objectsList.innerHTML = sanitizeHTML(objectsHTML);
+        objectsList.innerHTML = objectsHTML;
     } catch (error) {
-        console.error('Error updating astronomical objects:', error);
         objectsList.innerHTML = '<p>Astronomical data unavailable</p>';
     }
 }
@@ -109,7 +105,7 @@ async function updateVisibleObjects() {
 async function updateISSInfo() {
     try {
         const issData = await apiService.getISSPassTimes(userLocation.latitude, userLocation.longitude);
-
+        if (!issData || !issData.response || !Array.isArray(issData.response)) throw new Error('ISS data unavailable');
         const issHTML = `
             <div class="iss-passes">
                 ${issData.response.slice(0, 3).map(pass => `
@@ -119,11 +115,10 @@ async function updateISSInfo() {
                     </div>
                 `).join('')}
             </div>
+            ${issData.fallback ? '<div class="notification warning">Live ISS data unavailable, showing demo data.</div>' : ''}
         `;
-
-        issInfo.innerHTML = sanitizeHTML(issHTML);
+        issInfo.innerHTML = issHTML;
     } catch (error) {
-        console.error('Error updating ISS info:', error);
         issInfo.innerHTML = '<p>ISS information unavailable</p>';
     }
 }
