@@ -1,9 +1,15 @@
+// If using Node.js 18+, fetch is available globally. If not, uncomment the next line:
+// import fetch from 'node-fetch';
+
 export default async function handler(req, res) {
     if (req.method !== 'GET') {
         return res.status(405).json({ error: 'Method not allowed' });
     }
     const { lat, lon } = req.query;
-    const url = `http://api.open-notify.org/iss-pass.json?lat=${lat}&lon=${lon}`;
+    if (!lat || !lon) {
+        return res.status(400).json({ error: 'Missing lat or lon parameter' });
+    }
+    const url = `https://api.open-notify.org/iss-pass.json?lat=${lat}&lon=${lon}`;
     try {
         const response = await fetch(url);
         const data = await response.json();
